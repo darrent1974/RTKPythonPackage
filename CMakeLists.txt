@@ -22,3 +22,6 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/BuildLinuxWheels.sh
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/BuildWindowsWheels.ps1
   ${CMAKE_BINARY_DIR}/BuildWindowsWheels.ps1 COPYONLY)
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/BuildMacOSWheels.sh
+  ${CMAKE_BINARY_DIR}/BuildMacOSWheels.sh COPYONLY)

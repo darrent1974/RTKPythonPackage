@@ -1,0 +1,15 @@
+sudo: true
+language: cpp
+os:
+- osx
+compiler:
+- gcc
+cache:
+  directories:
+  - "$HOME/Library/Caches/Homebrew"
+script:
+  - if ! test -d build; then mkdir build; fi
+  - cd build
+  - cmake ..
+  - chmod u+x BuildMacOSWheels.sh
+  - ./BuildMacOSWheels.sh
