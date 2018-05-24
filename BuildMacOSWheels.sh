@@ -11,14 +11,27 @@ brew install gnu-sed --with-default-names
 curl -L https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/macpython-download-cache-and-build-module-wheels.sh -O
 chmod u+x macpython-download-cache-and-build-module-wheels.sh
 
-# Remove call to the build script to only perform the download step.
+# Remove call to the build/install scripts to only perform the download step.
 # This allows for altering the cache in case sources are not up-to-date  
 replace_line="/Users/Kitware/Dashboards/ITK/ITKPythonPackage/scripts/macpython-build-module-wheels.sh \"\$\@\""
 sed -i -e "s|$replace_line||g" \
   macpython-download-cache-and-build-module-wheels.sh
 
+replace_line="/Users/Kitware/Dashboards/ITK/ITKPythonPackage/scripts/macpython-install-python.sh"
+sed -i -e "s|$replace_line||g" \
+  macpython-download-cache-and-build-module-wheels.sh
+
 # Perform download step
 ./macpython-download-cache-and-build-module-wheels.sh
+
+# Only install one python version to avoid timeout on TravisCI
+command="for pyversion in \$LATEST_27; do"
+replace_line="for pyversion in \$LATEST_27 \$LATEST_35 \$LATEST_36; do"
+sed -i -e "s|$replace_line|$command|g" \
+  /Users/Kitware/Dashboards/ITK/ITKPythonPackage/scripts/macpython-install-python.sh
+
+# Perform python install step
+/Users/Kitware/Dashboards/ITK/ITKPythonPackage/scripts/macpython-install-python.sh
 
 # Force pip to upgrade
 command="\${PYTHON_EXECUTABLE} -m pip install --upgrade pip"
