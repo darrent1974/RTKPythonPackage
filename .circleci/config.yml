@@ -14,12 +14,12 @@ jobs:
           no_output_timeout: 1.0h
           command: |
             cmake ~/RTKPythonPackage
-		- run:
-                  name: Fetch build script
-                  command: |
-                    curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/requirements-dev.txt -O
-                    curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
-                    chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
+      - run:
+          name: Fetch build script
+          command: |
+            curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/requirements-dev.txt -O
+            curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
+            chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
       - run:
           name: Build Python packages
           no_output_timeout: 1.0h
