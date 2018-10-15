@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script should lie in a directory alongside with the RTK sources
-#cd RTK
+cd RTK
 
 # Fetch script from https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage
 #curl -L https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
@@ -21,10 +21,10 @@ if [[ ! -d ITKPythonPackage ]]; then
 fi
 
 # Apply patch from https://github.com/InsightSoftwareConsortium/ITK/commit/83801da92519a49934b265801d303a6531856b50
-after_line="set(image \"\${ITKN_\${name}}\")"
-additional_command="if(image STREQUAL \"\")\n      string(REPLACE \"I\" \"itkImage\" imageTemplate \${name})\n      set(image \${imageTemplate})\n    endif()"
-sed -i -e "s|$after_line|$after_line\n    $additional_command|g" \
-  ITKPythonPackage/standalone-x64-build/ITK-source/Wrapping/Generators/Python/CMakeLists.txt
+#after_line="set(image \"\${ITKN_\${name}}\")"
+#additional_command="if(image STREQUAL \"\")\n      string(REPLACE \"I\" \"itkImage\" imageTemplate \${name})\n      set(image \${imageTemplate})\n    endif()"
+#sed -i -e "s|$after_line|$after_line\n    $additional_command|g" \
+#  ITKPythonPackage/standalone-x64-build/ITK-source/Wrapping/Generators/Python/CMakeLists.txt
 
 # Add CMake options for building the module
 after_line='-DBUILD_TESTING:BOOL=OFF \\'
