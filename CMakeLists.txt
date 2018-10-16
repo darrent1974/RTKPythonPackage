@@ -12,9 +12,9 @@ execute_process(
   COMMAND ${GIT_EXECUTABLE} clone https://github.com/SimonRit/RTK.git RTK
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
-execute_process(
+#execute_process(
 #  COMMAND ${GIT_EXECUTABLE} checkout ${GIT_TAG}
-  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/RTK)
+#  WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/RTK)
 
 # Copy build scripts
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/BuildLinuxWheels.sh
