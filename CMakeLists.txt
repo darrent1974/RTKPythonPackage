@@ -8,8 +8,8 @@ cmake_minimum_required(VERSION 2.8)
 find_package(Git)
 
 # Fetching RTK
-execute_process(
-  COMMAND ${GIT_EXECUTABLE} clone https://github.com/SimonRit/RTK.git RTK
+execute_process(	
+  COMMAND ${GIT_EXECUTABLE} clone https://github.com/darrent1974/RTK.git RTK
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
 #execute_process(
