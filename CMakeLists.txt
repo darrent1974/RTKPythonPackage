@@ -3,7 +3,7 @@ project(RTKPythonPackage)
 cmake_minimum_required(VERSION 2.8)
 
 # RTK git tag
-set(GIT_TAG 33107fb777bff65b78dd35695375a1213241610a)
+#set(GIT_TAG 33107fb777bff65b78dd35695375a1213241610a)
 
 find_package(Git)
 
@@ -13,7 +13,7 @@ execute_process(
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 
 execute_process(
-  COMMAND ${GIT_EXECUTABLE} checkout ${GIT_TAG}
+#  COMMAND ${GIT_EXECUTABLE} checkout ${GIT_TAG}
   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/RTK)
 
 # Copy build scripts
