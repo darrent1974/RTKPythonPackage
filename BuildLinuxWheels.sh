@@ -3,12 +3,7 @@
 # This script should lie in a directory alongside with the RTK sources
 cd RTK
 
-# Fetch script from https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage
-#curl -L https://rawgit.com/InsightSoftwareConsortium/ITKPythonPackage/master/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
-#chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
-
-#export ITK_PACKAGE_VERSION=v5.0a01
-#export ITK_PACKAGE_VERSION=v4.13.0
+export ITK_PACKAGE_VERSION=v4.13.1.post1
 
 # Remove call to the build script to only perform the download step.
 # This allows for altering the cache in case sources are not up-to-date  
@@ -34,7 +29,7 @@ sed -i -e "s|$after_line|$after_line\n      $rtk_build_applications|g" \
   ITKPythonPackage/scripts/internal/manylinux-build-module-wheels.sh
 
 if [ $ITK_PACKAGE_VERSION == v4.13.1.post1 ]; then
-  echo 'Building against ITK 4.13.0 Adding -std=c++11 flag.. ' 1>&2
+  echo 'Building against ITK v4.13.1.post1 Adding -std=c++11 flag.. ' 1>&2
   cmake_cxx_flags='-DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -std=c++11" \\'
   sed -i -e "s|$after_line|$after_line\n      $cmake_cxx_flags|g" \
     ITKPythonPackage/scripts/internal/manylinux-build-module-wheels.sh
