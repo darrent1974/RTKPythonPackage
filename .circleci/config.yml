@@ -1,7 +1,7 @@
 version: 2
 jobs:
   package:
-    working_directory: ~/RTKPythonPackage-build
+    working_directory: ~/RTKPythonPackage
     machine: true
     steps:
       - add_ssh_keys:
@@ -13,14 +13,13 @@ jobs:
           name: Configure
           no_output_timeout: 1.0h
           command: |
-            cd ~/RTKPythonPackage-build
             git clone https://github.com/darrent1974/RTK.git RTK
             cd RTK
             git checkout PythonWrapping
       - run:
           name: Fetch build script
           command: |
-            cd ~/RTKPythonPackage-build/RTK
+            cd /RTK
             curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/requirements-dev.txt -O
             curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
             chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
