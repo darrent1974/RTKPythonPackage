@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Fetch build script
           command: |
-            cd /RTK
+            cd RTK
             curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/requirements-dev.txt -O
             curl -L https://raw.githubusercontent.com/InsightSoftwareConsortium/ITKPythonPackage/v4.13.1.post1/scripts/dockcross-manylinux-download-cache-and-build-module-wheels.sh -O
             chmod u+x dockcross-manylinux-download-cache-and-build-module-wheels.sh
@@ -31,7 +31,7 @@ jobs:
             chmod u+x BuildLinuxWheels.sh
             ./BuildLinuxWheels.sh
       - store_artifacts:
-          path: ~/RTKPythonPackage-build/RTK/dist
+          path: ~/RTKPythonPackage/RTK/dist
 
 workflows:
     version: 2
