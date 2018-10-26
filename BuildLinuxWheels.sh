@@ -57,7 +57,7 @@ script_dir=$(cd $(dirname $0) || exit 1; pwd)
 
 # Build wheels
 mkdir -p dist
-DOCKER_ARGS="-v $(pwd)/dist:/work/dist/ -v $script_dir/..:/ITKPythonPackage -v $(pwd)/tools:/tools -v /usr/local/cuda:/usr/local/cuda"
+DOCKER_ARGS="--rm -v $(pwd)/dist:/work/dist/ -v $script_dir/..:/ITKPythonPackage -v $(pwd)/tools:/tools -v  $script_dir/../../cuda-80:/cuda80"
 echo "DOCKER_ARGS = " $DOCKER_ARGS
 /tmp/dockcross-manylinux-x64 \
   -a "$DOCKER_ARGS" \
